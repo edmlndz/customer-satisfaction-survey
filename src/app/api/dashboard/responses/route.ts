@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { verifyJWT } from '@/lib/jwt';
 import clientPromise from '@/lib/mongodb';
 
+// Marcar como dinámica para evitar el error de renderizado estático
+export const dynamic = 'force-dynamic';
+
 async function verifyToken(request: Request) {
   const authHeader = request.headers.get('Authorization');
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
