@@ -1,13 +1,11 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, MongoClientOptions } from 'mongodb'
 
 if (!process.env.MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local')
 }
 
 const uri = process.env.MONGODB_URI
-const options = {
-  ssl: true,
-  sslValidate: true,
+const options: MongoClientOptions = {
   retryWrites: true,
   maxPoolSize: 10,
   serverSelectionTimeoutMS: 5000,
