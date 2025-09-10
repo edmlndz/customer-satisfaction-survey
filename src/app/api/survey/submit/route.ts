@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '@/lib/mongodb';
-import { SurveyResponse } from '@/types/survey';
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,7 +17,7 @@ export async function POST(request: NextRequest) {
     const db = client.db('customer-satisfaction-survey');
     const collection = db.collection('responses');
 
-    const surveyResponse: SurveyResponse = {
+    const surveyResponse = {
       responses,
       submittedAt: new Date(),
       ipAddress: request.ip || 'unknown',
